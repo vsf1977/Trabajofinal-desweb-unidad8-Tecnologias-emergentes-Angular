@@ -1,6 +1,30 @@
 <div class="fondo">
-    <div class = "container">
-      <app-barra-superior></app-barra-superior>
-      <div class = "prueba"></div>
+  <div class = "container">
+    <app-barra-superior></app-barra-superior>
+    <div class="row principal">
+      <div class="row">
+        <div class="col s12 m6 l6 titulo ">
+            <h4>Catálogo de Productos</h4>
+        </div>
+        <div class="col s12 m4 l4 offset-m2 offset-l2 buscador right-align">
+            <h5>Qué estas buscando?</h5>
+            <input type="text" id="patron">
+        </div>
+      </div>
+      <hr>
+      <div class = "row productos">
+        <div *ngFor="let item of productos" class="foto producto">
+          <img src= "../../../assets/{{item.nombre}}.jpg" alt=""><br>
+          <h5 class="nombre">{{item.nombre}}</h5>
+          <span><b>Precio : ${{item.precio}} </b></span><br> 
+          <span><b>Unidades disponibles : {{item.unidades}}</b></span><br><br>
+          <div>
+          <a class="waves-effect waves-light btn-small">Ver mas</a>
+          <a class="waves-effect waves-light btn-small">Añadir</a>
+          <input type="number"  name="cantidad" min="0" max="100" >
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

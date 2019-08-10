@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
 
   user : Usermodel
   error_login : boolean
-  usuarios : Usermodel[]
 
   constructor(private datos: DatosService,  private router: Router) {
     this.error_login = false;

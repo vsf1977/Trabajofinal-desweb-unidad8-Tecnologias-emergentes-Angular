@@ -1,20 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Usermodel } from '../modelos/modelos.module';
-import { DatabaseService } from './database.service';
-import { Response } from '@angular/http';
-
+import { DatabaseService } from './database.service';;
+import 'rxjs/Rx';
 
 @Injectable()
 export class DatosService {
 
   constructor(private database : DatabaseService) {
-    this.getdata();
+    this.ListaUsuarios()
    }
 
-  public data: any = null;
-
-  user: Usermodel;
-  users: Usermodel[];
+  private usuarios : Usermodel[]
 
   newuser(): any {
     return {
@@ -23,18 +19,17 @@ export class DatosService {
     };
   }
 
-  getdata(){
-    this.database.getdata().subscribe((res : Response)  =>  this.data = res)
+  ListaUsuarios() {
+    this.database.getUsers().subscribe(() => this.usuarios = this.database.usuarios)
   }
 
   Checkuser(user: Usermodel)
   {
-    this.getdata()
     let found : boolean
     found = false
-    for (let i=0;i<this.data.length;i++)
+    for (let i=0;i<this.usuarios.length;i++)
     {
-      if (user.email == this.data[i].email && user.password == this.data[i].password)
+      if (user.email == this.usuarios[i].email && user.password == this.usuarios[i].password)
       {
         found =  true
       }

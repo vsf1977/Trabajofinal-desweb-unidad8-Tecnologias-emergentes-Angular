@@ -9,8 +9,81 @@
   position: fixed;
 }
 
-
-.prueba
+.principal
 {
-  height: 100vh !important;
+  background-color: white;
+  padding : 10px;
+  margin-top: 20px;  
 }
+
+#patron
+{
+  width: 80%;
+}
+
+.productos
+{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  height: 55vh;
+  overflow-y:scroll;
+}
+
+.producto
+{
+  width: 24.5%;
+  border: 1px solid #5B92D9;
+  box-shadow: 3px 3px 6px #C2C2C2;
+  padding: 3px;
+  background-color: #F2F2F2;  
+  height: 350px !important;
+  margin-top: 10px;
+}
+
+.producto img{
+  width: 100%;
+  height: 150px;
+}
+
+.nombre
+{
+  text-transform: capitalize;
+}
+
+input[type=number]
+{
+  width: 32px;
+}
+
+@media only screen and (max-width: 650px)
+{
+  #patron
+  {
+    width: 50%;
+  }
+
+  .titulo
+  {
+    text-align: center
+  }
+
+  .buscador
+  {
+    text-align: center
+  }
+  
+  .producto
+  {
+    width: 48%;    
+  }
+}
+
+@media only screen and (min-width: 651px) and (max-width: 1100px)
+{
+  .producto
+  {
+    width: 33%;    
+  }
+}
+

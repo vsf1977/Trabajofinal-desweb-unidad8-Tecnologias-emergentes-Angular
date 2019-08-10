@@ -10,13 +10,15 @@ import { DatosService } from './servicios/datos.service';
 import { DatabaseService } from './servicios/database.service';
 import { BarraSuperiorComponent } from './componentes/barra-superior/barra-superior.component';
 import { MainComponent } from './componentes/main/main.component';
+import { DetalleComponent } from './componentes/detalle/detalle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     BarraSuperiorComponent,
-    MainComponent
+    MainComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,

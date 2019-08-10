@@ -16,3 +16,10 @@ export interface Usermodel {
   email: string;
   password: string
 }
+
+export interface ProductModel {
+  nombre: string;
+  precio : number,
+  unidades : number
+}
+
