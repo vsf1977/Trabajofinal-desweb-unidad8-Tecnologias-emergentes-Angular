@@ -15,11 +15,6 @@ export class MainComponent implements OnInit {
   productos : ProductModel[]
 
   constructor(private database : DatabaseService) {
-    window.scroll({
-      top: 2500,
-      left: 0,
-      behavior: 'smooth'
-    })
   }
 
   ngOnInit() {

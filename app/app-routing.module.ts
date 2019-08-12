@@ -7,7 +7,7 @@ import { DetalleComponent } from './componentes/detalle/detalle.component';
 const routes: Routes = [
   {path : 'login', component: LoginComponent },
   {path : 'main', component: MainComponent },
-  {path : 'main/detalle', component: DetalleComponent },
+  {path : 'main/detalle/:nombre', component: DetalleComponent },
   {path: '**', pathMatch: 'full', redirectTo: 'login' }
 ];
 

@@ -13,7 +13,7 @@
 {
   background-color: white;
   padding : 10px;
-  margin-top: 20px;  
+  margin-top: 20px;
 }
 
 #patron
@@ -36,14 +36,14 @@
   border: 1px solid #5B92D9;
   box-shadow: 3px 3px 6px #C2C2C2;
   padding: 3px;
-  background-color: #F2F2F2;  
-  height: 350px !important;
+  background-color: #F2F2F2;
+  min-height: 110% !important;
   margin-top: 10px;
 }
 
 .producto img{
   width: 100%;
-  height: 150px;
+  height: 50%;
 }
 
 .nombre
@@ -51,9 +51,19 @@
   text-transform: capitalize;
 }
 
-input[type=number]
+
+.btn-detalle, .btn-añadir-carrito
 {
-  width: 32px;
+  width :35%;
+  white-space:normal !important;
+  padding: 0px;
+}
+
+
+
+#cantidad
+{
+  width :25%;
 }
 
 @media only screen and (max-width: 650px)
@@ -72,10 +82,10 @@ input[type=number]
   {
     text-align: center
   }
-  
+
   .producto
   {
-    width: 48%;    
+    width: 48%;
   }
 }
 
@@ -83,7 +93,7 @@ input[type=number]
 {
   .producto
   {
-    width: 33%;    
+    width: 33%;
   }
 }
 

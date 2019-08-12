@@ -13,18 +13,19 @@
       </div>
       <hr>
       <div class = "row productos">
-        <div *ngFor="let item of productos" class="foto producto">
-          <img src= "../../../assets/{{item.nombre}}.jpg" alt=""><br>
+        <div *ngFor="let item of productos" class="producto">
+          <img src= "../../../assets/{{item.nombre}}.jpg" alt="">
           <h5 class="nombre">{{item.nombre}}</h5>
-          <span><b>Precio : ${{item.precio}} </b></span><br> 
-          <span><b>Unidades disponibles : {{item.unidades}}</b></span><br><br>
+          <span><b>Precio : ${{item.precio}} </b></span><br>
+          <span><b>Unidades disponibles : {{item.unidades}}</b></span>
           <div>
-          <a class="waves-effect waves-light btn-small">Ver mas</a>
-          <a class="waves-effect waves-light btn-small">Añadir</a>
-          <input type="number"  name="cantidad" min="0" max="100" >
+            <a  [routerLink]="['/main/detalle',item.nombre]" class="waves-effect waves-light btn-small btn-detalle">Ver mas</a>
+            <a class="waves-effect waves-light btn-small btn-añadir-carrito">Añadir</a>
+            <input type="number" id="cantidad" min="0" max="100" >
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
