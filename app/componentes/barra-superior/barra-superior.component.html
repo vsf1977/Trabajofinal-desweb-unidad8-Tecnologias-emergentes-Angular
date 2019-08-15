@@ -1,10 +1,11 @@
 <nav class="navbar">
   <div class="nav-wrapper">
-      <a href="#" class="brand-logo left">La Bodega</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <span class="brand-logo left">La Bodega</span>
+      <ul id="nav-mobile" class="right">
+          <span class="right">{{nombre}} </span>
           <li><a href="#"><i class="material-icons">apps</i></a></li>
           <li><a href="#"><i class="material-icons">shopping_cart</i></a></li>
-          <li><a href="#"><i class="material-icons">exit_to_app</i></a></li>
+          <li><a href="#" (click)="CerrarSesion()"><i class="material-icons">exit_to_app</i></a></li>
       </ul>
   </div>
 </nav>

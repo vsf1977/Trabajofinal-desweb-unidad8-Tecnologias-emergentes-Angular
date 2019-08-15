@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductModel } from '../../modelos/modelos.module'
+import { ProductModel, CarritoModel, Usermodel} from '../../modelos/modelos.module'
 import { DatosService } from '../../servicios/datos.service'
 import { DatabaseService } from '../../servicios/database.service';
-import { Http, Response } from '@angular/http';
+import { Router } from '@angular/router';
 import 'rxjs/Rx';
 
 @Component({
@@ -13,23 +13,74 @@ import 'rxjs/Rx';
 export class MainComponent implements OnInit {
 
   productos : ProductModel[]
+  carrito :  CarritoModel[]
+  patron : string
 
-  constructor(private database : DatabaseService) {
+  constructor(private database : DatabaseService,private datos: DatosService,  private router: Router) {
+    if (this.datos.VerificarSesion() == null)
+    {
+      this.router.navigate(['/login'])
+    }
+    else
+    {
+      this.ListaCarrito(this.datos.VerificarSesion())      
+      this.ListaProductos()      
+    }
   }
 
   ngOnInit() {
-    this.ListaProductos()
+    this.patron = ''
+  }
+
+  ListaCarrito(user : string) {
+    if(!this.database.carrito)
+    {
+      this.database.getCarrito(user).subscribe(() => this.carrito = this.database.carrito)
+    }
+    else
+    {
+      this.carrito = this.database.carrito
+    }
+  }
+
+  Patron(event: any) { 
+    this.patron = event.target.value.trim().toUpperCase()    
+    this.ListaProductos()  
   }
 
   ListaProductos() {
     if(!this.database.productos)
     {
-      this.database.getProducts().subscribe(() => this.productos = this.database.productos)
+      this.database.getProducts().subscribe(() =>{ 
+        this.Filtrar()
+      })
     }
     else
     {
-      this.productos = this.database.productos
+      this.Filtrar()
     }
   }
 
+
+  Filtrar()
+  {
+  if (this.patron == '')
+    {        
+      this.productos = this.database.productos
+    }
+    else
+    {   
+      let producto : string
+      let aux : any[] = []
+      for(let i=0;i<this.database.productos.length;i++)
+      {
+        producto = this.database.productos[i].nombre.toUpperCase()
+        if (producto.indexOf(this.patron) > -1)
+          {
+            aux.push(this.database.productos[i])
+          }
+          this.productos =  aux
+      }
+    }
+  }
 }

@@ -8,7 +8,10 @@
         </div>
         <div class="col s12 m4 l4 offset-m2 offset-l2 buscador right-align">
             <h5>Qué estas buscando?</h5>
-            <input type="text" id="patron">
+            <input type="text" id="patron" (keyup)="Patron($event)"> 
+        </div>
+        <div *ngFor="let subject of carrito">           
+            {{subject.producto}}          
         </div>
       </div>
       <hr>

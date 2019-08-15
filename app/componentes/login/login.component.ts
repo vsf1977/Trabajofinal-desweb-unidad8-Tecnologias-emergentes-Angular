@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core'
-import { Usermodel } from '../../modelos/modelos.module'
+import { Usermodel, CarritoModel } from '../../modelos/modelos.module'
 import { DatosService } from '../../servicios/datos.service'
+import { DatabaseService } from '../../servicios/database.service';
 import {NgForm} from '@angular/forms'
 import { Router } from '@angular/router';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-login',
@@ -13,23 +15,39 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   user : Usermodel
+  carrito : CarritoModel
   error_login : boolean
 
-  constructor(private datos: DatosService,  private router: Router) {
+  constructor(private datos: DatosService,  private router: Router, private database : DatabaseService) {
     this.error_login = false;
+    if (this.datos.VerificarSesion() != null)
+    {
+      this.router.navigate(['main'])
+    }
   }
 
   ngOnInit() {
-    this.user = this.datos.newuser()
+    this.carrito = this.datos.NuevoCarrito()
+    this.user = this.datos.NuevoUsuario()
   }
 
   onSubmit(f: NgForm) {
     this.error_login = true
-    if (this.datos.Checkuser(this.user))
+    if (this.datos.VerificarUsuario(this.user))
     {
       this.error_login = false
-      this.router.navigate(['main']);
+      this.datos.IniciarSesion(this.user.email)
+      this.router.navigate(['main']);   
+      this.Guardarcarrito()   
     }
+  }
+
+  Guardarcarrito() {
+    this.carrito.cantidad = 88
+    this.carrito.precio = 100
+    this.carrito.producto = 'cebolla'
+    this.carrito.usuario =this.user.email
+    this.database.savecarrito(this.carrito).subscribe((data : Response) => console.log(""))
   }
 
   Update_error()

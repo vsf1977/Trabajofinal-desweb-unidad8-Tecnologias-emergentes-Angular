@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import {ActivatedRoute} from '@angular/router'
 import { ProductModel } from '../../modelos/modelos.module'
 import { DatosService } from '../../servicios/datos.service'
-import { MainComponent } from '../main/main.component'
+import { Router } from '@angular/router';
 import { DatabaseService } from '../../servicios/database.service'
-import { Http, Response } from '@angular/http'
 import 'rxjs/Rx';
 
 @Component({
@@ -18,36 +17,49 @@ export class DetalleComponent implements OnInit {
   producto = ''
   precio = 0
   unidades = 0
-  parametro = 'nombre'
   productos : ProductModel[]
-  constructor(private activatedRoute: ActivatedRoute, private database : DatabaseService) 
+  constructor(private datos: DatosService,private activatedRoute: ActivatedRoute, private database : DatabaseService,  private router: Router)
   {
-     this.producto = this.activatedRoute.snapshot.params[this.parametro];
+
   }
 
   ngOnInit() {
-    this.getinfo()
-    
-  }
-
-  
-  getinfo() {
-    if(!this.database.productos)
-    {     
-      this.database.getProducts().subscribe(() => this.productos = this.database.productos)
+    if (this.datos.VerificarSesion() == null)
+    {
+      this.router.navigate(['/login'])
     }
     else
-    {      
-      this.productos = this.database.productos
-    }
-    console.log(this.productos)
-    for (let i=0;i<this.database.productos.length;i++)
     {
-      if (this.database.productos[i].nombre == this.producto)
-      {
-        this.precio = this.database.productos[i].precio
-        this.unidades =  this.database.productos[i].unidades
-      }
+      this.getinfo()
     }
+  }
+
+
+  getinfo() {
+    this.activatedRoute.params.subscribe(params => {
+      if(this.database.productos){
+        this.productos = this.database.productos
+      }else{
+        this.database.getProducts().subscribe(() => this.productos = this.database.productos)
+            //this.checkCarrito(); //Verificar si existen productos en el carrito
+            console.log(this.database.productos)
+        }
+        if (this.database.productos == null)
+        {
+          this.router.navigate(['/main'])
+        }
+        else
+        {
+          this.producto = params['nombre']
+          for (let i=0;i<this.productos.length;i++)
+          {
+            if (this.productos[i].nombre == params['nombre'])
+            {
+              this.precio = this.productos[i].precio
+              this.unidades =  this.productos[i].unidades
+            }
+          }
+      }
+    })
   }
 }

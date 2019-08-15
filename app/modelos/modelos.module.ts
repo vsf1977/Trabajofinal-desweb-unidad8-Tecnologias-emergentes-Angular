@@ -13,13 +13,20 @@ import { FormsModule } from '@angular/forms';
 export class ModelosModule { }
 
 export interface Usermodel {
-  email: string;
+  email: string 
   password: string
+  nombre : string
 }
 
 export interface ProductModel {
-  nombre: string;
-  precio : number,
+  nombre: string
+  precio : number
   unidades : number
 }
 
+export interface CarritoModel {
+  cantidad : number,
+  precio : number,  
+  producto: string, 
+  usuario : string  
+}

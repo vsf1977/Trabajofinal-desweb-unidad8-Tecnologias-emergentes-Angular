@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { DatosService } from '../../servicios/datos.service'
+import { Router } from '@angular/router'
+import { DatabaseService } from '../../servicios/database.service'
+import { Usermodel } from 'app/modelos/modelos.module';
 
 @Component({
   selector: 'app-barra-superior',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarraSuperiorComponent implements OnInit {
 
-  constructor() { }
+  nombre : string = ''
+  usuarios :  Usermodel[]
 
-  ngOnInit() {
+  constructor(private datos: DatosService, private database : DatabaseService,  private router: Router)
+  {
   }
 
+  ngOnInit() {
+    this.nombre = localStorage.getItem('nombre')
+  }
+
+  CerrarSesion()
+  {
+    this.datos.CerrarSesion()
+    this.router.navigate(['main'])
+  }
 }
