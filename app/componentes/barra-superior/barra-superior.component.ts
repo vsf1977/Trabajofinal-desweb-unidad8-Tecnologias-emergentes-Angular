@@ -13,9 +13,18 @@ export class BarraSuperiorComponent implements OnInit {
 
   nombre : string = ''
   usuarios :  Usermodel[]
+  total : number
 
   constructor(private datos: DatosService, private database : DatabaseService,  private router: Router)
   {
+    if (this.datos.VerificarSesion() == null)
+      {
+        this.router.navigate(['/login'])
+      }
+      else
+      {
+        this.GetCantidad(this.datos.VerificarSesion())
+      }
   }
 
   ngOnInit() {
@@ -26,5 +35,12 @@ export class BarraSuperiorComponent implements OnInit {
   {
     this.datos.CerrarSesion()
     this.router.navigate(['main'])
+  }
+
+  GetCantidad(user : string)
+  {
+    this.database.getCarrito(user).subscribe(() => {
+      this.total =  this.database.cantidadtotal
+    })
   }
 }

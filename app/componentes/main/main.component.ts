@@ -23,24 +23,13 @@ export class MainComponent implements OnInit {
     }
     else
     {
-      this.ListaCarrito(this.datos.VerificarSesion())      
       this.ListaProductos()      
     }
   }
 
   ngOnInit() {
     this.patron = ''
-  }
-
-  ListaCarrito(user : string) {
-    if(!this.database.carrito)
-    {
-      this.database.getCarrito(user).subscribe(() => this.carrito = this.database.carrito)
-    }
-    else
-    {
-      this.carrito = this.database.carrito
-    }
+    this.ListaProductos()  
   }
 
   Patron(event: any) { 

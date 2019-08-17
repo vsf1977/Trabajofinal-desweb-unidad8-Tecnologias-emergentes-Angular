@@ -11,6 +11,8 @@ import { DatabaseService } from './servicios/database.service';
 import { BarraSuperiorComponent } from './componentes/barra-superior/barra-superior.component';
 import { MainComponent } from './componentes/main/main.component';
 import { DetalleComponent } from './componentes/detalle/detalle.component';
+import { CarritoComponent } from './componentes/carrito/carrito.component';
+import { MultipPipe } from './multip.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DetalleComponent } from './componentes/detalle/detalle.component';
     LoginComponent,
     BarraSuperiorComponent,
     MainComponent,
-    DetalleComponent
+    DetalleComponent,
+    CarritoComponent,
+    MultipPipe
   ],
   imports: [
     BrowserModule,

@@ -37,15 +37,15 @@ export class LoginComponent implements OnInit {
     {
       this.error_login = false
       this.datos.IniciarSesion(this.user.email)
-      this.router.navigate(['main']);   
-      this.Guardarcarrito()   
+      this.router.navigate(['main']);
+      this.Guardarcarrito()
     }
   }
 
   Guardarcarrito() {
-    this.carrito.cantidad = 88
-    this.carrito.precio = 100
-    this.carrito.producto = 'cebolla'
+    this.carrito.cantidad = 20
+    this.carrito.precio = 84
+    this.carrito.producto = 'Kiwi'
     this.carrito.usuario =this.user.email
     this.database.savecarrito(this.carrito).subscribe((data : Response) => console.log(""))
   }

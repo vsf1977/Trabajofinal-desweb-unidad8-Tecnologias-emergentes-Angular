@@ -3,8 +3,8 @@
       <span class="brand-logo left">La Bodega</span>
       <ul id="nav-mobile" class="right">
           <span class="right">{{nombre}} </span>
-          <li><a href="#"><i class="material-icons">apps</i></a></li>
-          <li><a href="#"><i class="material-icons">shopping_cart</i></a></li>
+          <li><a [routerLink]="['/tienda']"><i class="material-icons">apps</i></a></li>
+          <li><a [routerLink]="['/carrito']"><i class="material-icons">shopping_cart</i><span *ngIf="this.total > 0" class="contador">{{this.total}}</span></a></li>
           <li><a href="#" (click)="CerrarSesion()"><i class="material-icons">exit_to_app</i></a></li>
       </ul>
   </div>
