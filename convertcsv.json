@@ -1,0 +1,107 @@
+[
+ {
+   "nombre": "aguacate",
+   "precio": 4,
+   "unidades": 76
+ },
+ {
+   "nombre": "ajo",
+   "precio": 10,
+   "unidades": 63
+ },
+ {
+   "nombre": "almendras",
+   "precio": 4,
+   "unidades": 91
+ },
+ {
+   "nombre": "arandanos",
+   "precio": 2,
+   "unidades": 68
+ },
+ {
+   "nombre": "brocoli",
+   "precio": 2,
+   "unidades": 96
+ }, 
+ {
+   "nombre": "calabaza",
+   "precio": 5,
+   "unidades": 84
+ },
+ {
+   "nombre": "canela",
+   "precio": 9,
+   "unidades": 77
+ },
+ {
+   "nombre": "cebolla",
+   "precio": 2,
+   "unidades": 66
+ },
+ {
+   "nombre": "fresa",
+   "precio": 3,
+   "unidades": 81
+ },
+ {
+   "nombre": "kiwi",
+   "precio": 2,
+   "unidades": 67
+ },
+ {
+   "nombre": "limon",
+   "precio": 4,
+   "unidades": 51
+ },
+ {
+   "nombre": "lychee",
+   "precio": 10,
+   "unidades": 74
+ },
+ {
+   "nombre": "maiz",
+   "precio": 6,
+   "unidades": 79
+ },
+ {
+   "nombre": "manzana",
+   "precio": 2,
+   "unidades": 92
+ },
+ {
+   "nombre": "naranja",
+   "precio": 1,
+   "unidades": 56
+ },
+ {
+   "nombre": "papa",
+   "precio": 6,
+   "unidades": 98
+ },
+ {
+   "nombre": "pasta",
+   "precio": 8,
+   "unidades": 79
+ },
+ {
+   "nombre": "pimienta",
+   "precio": 6,
+   "unidades": 87
+ },
+ {
+   "nombre": "repollo",
+   "precio": 2,
+   "unidades": 63
+ },
+ {
+   "nombre": "tomate",
+   "precio": 1,
+   "unidades": 90
+ },
+ {
+   "nombre": "zanahoria",
+   "precio": 3,
+   "unidades": 87
+ }
+]

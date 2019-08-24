@@ -12,7 +12,6 @@ import { BarraSuperiorComponent } from './componentes/barra-superior/barra-super
 import { MainComponent } from './componentes/main/main.component';
 import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { CarritoComponent } from './componentes/carrito/carrito.component';
-import { MultipPipe } from './multip.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { MultipPipe } from './multip.pipe';
     MainComponent,
     DetalleComponent,
     CarritoComponent,
-    MultipPipe
   ],
   imports: [
     BrowserModule,
